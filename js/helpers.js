@@ -51,3 +51,15 @@ function toDateTimeString(Date, format = 'd/m/Y, g:i:s a', timeZone = 'Asia/Sing
 	    }
 	});
 }
+
+function escapeString(str) {
+    return str.replace(/['"]/g, '\\$&');
+}
+
+function unescapeString(str) {
+    return str.replace(/\\(.)/g, function(match, char) {
+        if (char === '"') return '"';
+        if (char === "'") return "'";
+        return char;
+    });
+}
